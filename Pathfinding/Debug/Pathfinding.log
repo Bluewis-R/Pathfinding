@@ -1,0 +1,7 @@
+﻿  Main.cpp
+  NNetwork.cpp
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(6): error C2600: 'NNetwork::NNetwork': cannot define a compiler-generated special member function (must be declared in the class first)
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(7): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(7): note: This diagnostic occurred in the compiler generated function 'NNetwork::NNetwork(void)'
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(36): warning C4552: '+': result of expression not used
+  Generating Code...
