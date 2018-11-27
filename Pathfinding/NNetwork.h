@@ -15,6 +15,7 @@ private:
 	std::vector<chromosome> chromosomes;
 
 public:
+	NNetwork();
 	void CreateChromosomes();
 	float CalculateFitnessMethod1(chromosome _chromo);
 

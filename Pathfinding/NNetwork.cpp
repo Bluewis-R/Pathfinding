@@ -31,25 +31,25 @@ void NNetwork::CreateChromosomes()
 }
 
 //	this adds to the m_x and m_y value of the 
-float CalculateFitnessMethod1(chromosome chromo)
+float CalculateFitnessMethod1(chromosome _chromo)
 {
 	for (int i = 0; i < 16; i+2)
 	{
-		if (chromo.m_instructions[i+1])	// if the second value is one 
+		if (_chromo.m_instructions[i+1])	// if the second value is one 
 		{
-			chromo.m_x = (-1)*i;
+			_chromo.m_x = (-1)*i;
 		}
 		else
 		{
-			chromo.m_y = (-1)*i;
+			_chromo.m_y = (-1)*i;
 		}
 	}
 
 	// find the differance between start and final.
+	//_chromo. = (chromo.m_x + chromo.m_y);
 
 
 
 
-
-
+	return 0;
 }
