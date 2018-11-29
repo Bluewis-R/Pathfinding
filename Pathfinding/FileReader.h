@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 
+class Maps;
+
 class FileReader
 {
 private:
@@ -13,7 +15,8 @@ private:
 
 public:
 	FileReader(std::string _path);
-	void ReadFile(std::string _path);
-
+	void ReadFile(std::string _path, std::vector<std::vector<int>>* _map);
+	
+	
 
 };

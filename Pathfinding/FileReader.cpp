@@ -1,12 +1,12 @@
 #include "FileReader.h"
+#include "Maps.h"
 
 FileReader::FileReader(std::string _path)
 {
 	m_filePath = _path;
-
 }
 
-void FileReader::ReadFile(std::string _path)
+void FileReader::ReadFile(std::string _path, std::vector<std::vector<int>>* _map)
 {
 	m_file.open(_path);
 	// error checking needed?
@@ -59,7 +59,7 @@ void FileReader::ReadFile(std::string _path)
 			temp.push_back(map[(i*tempSize[0]) + j]);
 			k++;
 		}
-		m_layout.push_back(temp);
+		_map->push_back(temp);
 	}
 
 	std::cout << "hello" << std::endl;
