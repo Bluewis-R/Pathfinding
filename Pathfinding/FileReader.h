@@ -13,7 +13,7 @@ private:
 
 public:
 	FileReader(std::string _path);
-	
 	void ReadFile(std::string _path);
+
 
 };

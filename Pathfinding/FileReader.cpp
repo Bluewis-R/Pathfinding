@@ -16,15 +16,19 @@ void FileReader::ReadFile(std::string _path)
 	int tempSize[2]{ 0, 0 };
 
 	std::vector<char> data;
+	std::vector<int> map;
+	//	importing the raw data
 	while (m_file.get(tempChar))
 	{
 		data.push_back(tempChar-48);
 	}
 
-	//finding the size of the layout
-	for (int i = 0,k = 0; i < 2; i++)
+	//	Find the size of the data set and
+	//	the postion that the data starts from
+	int k = 0;
+	for (int i = 0; i < 2; i++)
 	{
-		if ((int)data[k+1] > 0)
+		if ((int)data[k+1] >= 0)
 		{
 			tempSize[k+i] += data[k] * 10;
 			tempSize[k+i] += data[k + 1];
@@ -32,29 +36,31 @@ void FileReader::ReadFile(std::string _path)
 		}
 		else
 		{
-			tempSize[k+i] += data[k];
+			tempSize[i] += data[k];
 			k += 2;
 		}
 	}
 
-
-	tempSize[0] = (int)data[0];
-	tempSize[1] = (int)data[1];
-
-	for (int i = 2; i < tempSize[0]; i++)
+	for (; k < data.size(); k++)
 	{
-		for (int j = 0; j < tempSize[1]; j++)
+		if ((int)data[k] >= 0)
 		{
-			m_layout[i].push_back(data[(i*tempSize[1])+j]);
+			map.push_back((int)data[k]);
 		}
 	}
-	std::cout << "tesy" << std::endl;
 
-	/*
-	for (int i = 0; i< ; i++)
+	//	itterating though the data and formating
+	//	it into a vector that is push back into a vector
+	for (int i = 0; i < tempSize[0]; i++)
 	{
-
+		std::vector<int> temp;
+		for (int j = 0; j < tempSize[1]; j++)
+		{
+			temp.push_back(map[(i*tempSize[0]) + j]);
+			k++;
+		}
+		m_layout.push_back(temp);
 	}
-	*/
 
+	std::cout << "hello" << std::endl;
 }

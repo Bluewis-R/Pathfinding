@@ -1,2 +1,3 @@
 ﻿  FileReader.cpp
-  Pathfinding.vcxproj -> \\bournemouth.ac.uk\data\student\home\SciTech\s5063237\Desktop\Pathfinding\Debug\Pathfinding.exe
+d:\university\pathfinding\pathfinding\filereader.cpp(44): warning C4018: '<': signed/unsigned mismatch
+  Pathfinding.vcxproj -> D:\UNIVERSITY\Pathfinding\Debug\Pathfinding.exe
