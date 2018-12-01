@@ -1,5 +1,4 @@
 #include "NNetwork.h"
-
 #include "Maps.h"
 
 NNetwork::NNetwork()
@@ -9,23 +8,17 @@ NNetwork::NNetwork()
 
 //	This fucntion creates the four chromosomes
 //	needed and randomises the instruction data
-void NNetwork::CreateChromosomes()
-{
-	for (int i = 0; i < 4; i++)
-	{
-		chromosome temp;
-		chromosomes.push_back(temp);
-
-		for (int j = 0; j < 16; j++)
-		{
-			if (rand() % 2)
-			{
-				chromosomes[i].m_instructions[j] = 0;
-			}
-			else
-			{
-				chromosomes[i].m_instructions[j] = 1;
-			}
+void NNetwork::CreateChromosomes()																//	NNETWORK
+{																								//	
+	for (int i = 0; i < 4; i++)																	//	
+	{																							//	
+		chromosome temp;																		//	
+		chromosomes.push_back(temp);															//	
+		chromosomes.at(i).m_instructions = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };	//	
+																								//	
+		for (int j = 0; j < chromosomes.at(i).m_instructions.size(); j++)						//	
+		{																						//	
+			chromosomes.at(i).m_instructions.at(j) = rand() % 4;								//	
 		}
 	}
 }
@@ -47,15 +40,33 @@ float CalculateFitnessMethod1(chromosome _chromo)
 	return 0.0f;
 }
 
-float NNetwork::FitnessMethod1(chromosome _chromo)
-{
+
+float NNetwork::FitnessMethod1(chromosome _chromo, std::vector<std::vector<int>>* _map)								//	CALCULATING FITNESS
+{																													//
+	for (int i = 0; i < _map->size(); i++)																			//	Cycling through the mpa to find start and end point.
+	{																												//	
+		for (int j = 0; j < _map->at(i).size(); j++)																//	
+		{																											//	
+			if (_map->at(i).at(j) = 2)																				//	
+			{																										//	
+				m_startPoint.x = i;																					//	
+				m_startPoint.y = j;																					//	
+			}																										//	
+			if (_map->at(i).at(j) = 3)																				//	
+			{																										//	
+				m_endPoint.x = i;																					//	
+				m_endPoint.y = j;																					//
+			}																										//
+		}																											//
+	}																												//
+	m_currentPos = m_startPoint;																					//	
+//	for (_chromo.)
+	
 
 
 
 
-
-
-
+	//	fitness = 1 / (leagalfitness(x+y) 1)
 
 
 	return 0.0f;

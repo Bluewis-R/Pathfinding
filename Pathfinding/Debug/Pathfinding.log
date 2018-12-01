@@ -1,5 +1,17 @@
 ﻿  Main.cpp
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\main.cpp(13): error C2664: 'void FileReader::ReadFile(std::string,std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>> *)': cannot convert argument 2 from 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>' to 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>> *'
+          with
+          [
+              _Ty=int
+          ]
+  \\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\main.cpp(13): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+  Maps.cpp
+  NNetwork.cpp
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(6): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(19): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(31): warning C4552: '+': result of expression not used
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(46): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(48): warning C4018: '<': signed/unsigned mismatch
   FileReader.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\filereader.cpp(44): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\filereader.cpp(43): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-  Pathfinding.vcxproj -> \\bournemouth.ac.uk\data\Student\Home\SciTech\s5063237\Desktop\Pathfinding\Debug\Pathfinding.exe

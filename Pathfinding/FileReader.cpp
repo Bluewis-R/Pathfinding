@@ -6,32 +6,31 @@ FileReader::FileReader(std::string _path)
 	m_filePath = _path;
 }
 
-void FileReader::ReadFile(std::string _path, std::vector<std::vector<int>>* _map)
-{
-	m_file.open(_path);
-	// error checking needed?
+void FileReader::ReadFile(std::string _path, std::vector<std::vector<int>>* _map)			//	FILEREADER
+{																							//	
+	m_file.open(_path);																		//	This function take the path of the file
+	// error checking needed?																//	and the pointer to the vector it is to
+																							//	
+																							//	be stored in.
+	char tempChar;																			//	The File is opened and is dumped into
+	int tempSize[2]{ 0, 0 };																//	a temporary vector.
+																							//	
+	std::vector<char> data;																	//	The size of the map's x and y are stored
+	std::vector<int> map;																	//	in an array and the starting point of
+	//	importing the raw data																//	the map data is recorded.
+	while (m_file.get(tempChar))															//	
+	{																						//	Finaly the intergers are pushed back into a
+		data.push_back(tempChar - 48);														//	a temporary vector that is pushed back into
+	}																						//	Pointer of the loctaion of the Maps class.
+	m_file.close();
 
-
-	char tempChar;
-	int tempSize[2]{ 0, 0 };
-
-	std::vector<char> data;
-	std::vector<int> map;
-	//	importing the raw data
-	while (m_file.get(tempChar))
-	{
-		data.push_back(tempChar-48);
-	}
-
-	//	Find the size of the data set and
-	//	the postion that the data starts from
 	int k = 0;
 	for (int i = 0; i < 2; i++)
 	{
-		if ((int)data[k+1] >= 0)
+		if ((int)data[k + 1] >= 0)
 		{
-			tempSize[k+i] += data[k] * 10;
-			tempSize[k+i] += data[k + 1];
+			tempSize[k + i] += data[k] * 10;
+			tempSize[k + i] += data[k + 1];
 			k += 3;
 		}
 		else
@@ -61,6 +60,4 @@ void FileReader::ReadFile(std::string _path, std::vector<std::vector<int>>* _map
 		}
 		_map->push_back(temp);
 	}
-
-	std::cout << "hello" << std::endl;
 }

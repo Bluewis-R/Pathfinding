@@ -9,11 +9,10 @@ int main()
 	//setting up the maps
 	Maps maps;
 
-	FileReader fileReader("path1.txt");
-	fileReader.ReadFile("path1.txt", maps.GetMaps(0));
+	FileReader levelLoader("path1.txt");
+	levelLoader.ReadFile("path1.txt", maps.NewMap(0));
 
 	NNetwork network;
-	
 
 
 
