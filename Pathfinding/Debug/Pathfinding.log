@@ -1,9 +1,14 @@
-﻿  NNetwork.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(8): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(21): warning C4018: '<': signed/unsigned mismatch
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(33): warning C4552: '+': result of expression not used
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(48): warning C4018: '<': signed/unsigned mismatch
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(50): warning C4018: '<': signed/unsigned mismatch
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(68): warning C4018: '<': signed/unsigned mismatch
-\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\nnetwork.cpp(98): warning C4018: '>': signed/unsigned mismatch
-  Pathfinding.vcxproj -> \\bournemouth.ac.uk\data\student\home\SciTech\s5063237\Desktop\Pathfinding\Debug\Pathfinding.exe
+﻿  Main.cpp
+  Maps.cpp
+  NNetwork.cpp
+d:\university\pathfinding\pathfinding\nnetwork.cpp(8): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\university\pathfinding\pathfinding\nnetwork.cpp(21): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\nnetwork.cpp(33): warning C4552: '+': result of expression not used
+d:\university\pathfinding\pathfinding\nnetwork.cpp(48): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\nnetwork.cpp(50): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\nnetwork.cpp(68): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\nnetwork.cpp(98): warning C4018: '>': signed/unsigned mismatch
+  FileReader.cpp
+d:\university\pathfinding\pathfinding\filereader.cpp(49): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Pathfinding.vcxproj -> D:\UNIVERSITY\Pathfinding\Debug\Pathfinding.exe

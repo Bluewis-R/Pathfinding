@@ -9,8 +9,8 @@ int main()
 	//setting up the maps
 	Maps* maps = new Maps();
 	
-	FileReader levelLoader("path1.txt");
-	levelLoader.ReadFile("path1.txt", maps->NewMap(0));
+	FileReader levelLoader("path2.txt");
+	levelLoader.ReadFile("path2.txt", maps->NewMap(0));
 
 	NNetwork network;
 	network.CreateChromosomes();

@@ -106,7 +106,7 @@ float NNetwork::FitnessMethod1(chromosome _chromo, std::vector<std::vector<int>>
 	std::cout << "End Coord" << _chromo.m_currentPos.x << _chromo.m_currentPos.y << std::endl;
 		//	calculate fitness
 
-		_chromo.m_fitness = 1.0f / (abs((float)_chromo.m_currentPos.x - (float)m_endPoint.x) + abs(((float)_chromo.m_currentPos.y - (float)m_endPoint.y) + 1));
+		_chromo.m_fitness = 1.0f / (float)(abs(_chromo.m_currentPos.x - (float)m_endPoint.x) + abs((_chromo.m_currentPos.y - (float)m_endPoint.y) + 1));
 		std::cout << "m_fitness : " << _chromo.m_fitness;
 
 	return 0.0f;

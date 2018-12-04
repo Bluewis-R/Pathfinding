@@ -61,8 +61,11 @@ void FileReader::ReadFile(std::string _path, std::vector<std::vector<int>>* _map
 		std::vector<int> temp;
 		for (int j = 0; j < tempSize.at(1); j++)
 		{
-			temp.push_back(map.at((i*tempSize.at(0)) + j));
+
+			temp.push_back(map.at((i*tempSize.at(0))+j));
 		}
 		_map->push_back(temp);
 	}
+
+	//sdhgva
 }
