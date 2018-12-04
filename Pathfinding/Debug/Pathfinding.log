@@ -1,10 +1,9 @@
-﻿  Main.cpp
-  NNetwork.cpp
-d:\university\pathfinding\pathfinding\nnetwork.cpp(6): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\university\pathfinding\pathfinding\nnetwork.cpp(19): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\nnetwork.cpp(31): warning C4552: '+': result of expression not used
-d:\university\pathfinding\pathfinding\nnetwork.cpp(46): warning C4018: '<': signed/unsigned mismatch
+﻿  NNetwork.cpp
+d:\university\pathfinding\pathfinding\nnetwork.cpp(8): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\university\pathfinding\pathfinding\nnetwork.cpp(21): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\nnetwork.cpp(33): warning C4552: '+': result of expression not used
 d:\university\pathfinding\pathfinding\nnetwork.cpp(48): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\nnetwork.cpp(64): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+d:\university\pathfinding\pathfinding\nnetwork.cpp(50): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\nnetwork.cpp(68): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\nnetwork.cpp(106): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Pathfinding.vcxproj -> D:\UNIVERSITY\Pathfinding\Debug\Pathfinding.exe

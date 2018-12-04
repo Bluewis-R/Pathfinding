@@ -1,6 +1,8 @@
 #include "NNetwork.h"
 #include "Maps.h"
 
+
+
 NNetwork::NNetwork()
 {
 	srand(time((unsigned)NULL));
@@ -60,7 +62,9 @@ float NNetwork::FitnessMethod1(chromosome _chromo, std::vector<std::vector<int>>
 		}																																																	//	
 	}																																																		//	
 	_chromo.m_currentPos = m_startPoint;																																				//	
-																																																			//	
+		
+	std::cout << "start Cood" << _chromo.m_currentPos.x << _chromo.m_currentPos.y << std::endl;
+																																														//	
 	for (int i = 0; i < _chromo.m_instructions.size(); i++)																							//	for every m_instruction in _chromo 
 	{
 		//calculating m_nextPos
@@ -95,19 +99,23 @@ float NNetwork::FitnessMethod1(chromosome _chromo, std::vector<std::vector<int>>
 			_chromo.m_currentPos = _chromo.m_nextPos;
 		}
 	}
+	std::cout << "End Cood" << _chromo.m_currentPos.x << _chromo.m_currentPos.y << std::endl;
 
+	//	calculate fitness
 
-
-
-
-
-
-
-	//	fitness = 1 / (leagalfitness(x+y) 1)
-
+	_chromo.m_fitness = 1 / (abs(_chromo.m_currentPos.x - m_endPoint.x) + (_chromo.m_currentPos.y - m_endPoint.y) + 1);
+	std::cout << "m_fitness" << _chromo.m_fitness;
 
 	return 0.0f;
 }
+
+
+
+
+
+
+
+
 
 
 
