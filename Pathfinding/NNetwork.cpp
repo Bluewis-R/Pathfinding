@@ -30,7 +30,7 @@ void NNetwork::CreateChromosomes()																																		//	NNETWORK
 //	this adds to the m_x and m_y value of the 
 float CalculateFitnessMethod1(chromosome _chromo)
 {
-	for (int i = 0; i < 16; i+2)
+	for (int i = 0; i < 16; i + 2)
 	{
 
 	}
@@ -49,22 +49,22 @@ float NNetwork::FitnessMethod1(chromosome _chromo, std::vector<std::vector<int>>
 	{																																																		//	
 		for (int j = 0; j < _map->at(i).size(); j++)																											//	
 		{																																																	//	
-			if (_map->at(i).at(j) = 2)																																			//	
+			if (_map->at(i).at(j) == 2)																																			//	
 			{																																																//	
 				m_startPoint.x = i;																																						//	
 				m_startPoint.y = j;																																						//	
 			}																																																//	
-			if (_map->at(i).at(j) = 3)																																			//	
+			if (_map->at(i).at(j) == 3)																																			//	
 			{																																																//	
 				m_endPoint.x = i;																																							//	
 				m_endPoint.y = j;																																							//	
 			}																																																//	
 		}																																																	//	
 	}																																																		//	
-	_chromo.m_currentPos = m_startPoint;																																				//	
-		
-	std::cout << "start Cood" << _chromo.m_currentPos.x << _chromo.m_currentPos.y << std::endl;
-																																														//	
+	_chromo.m_currentPos = m_startPoint;																																//	
+
+	std::cout << "start Coord" << _chromo.m_currentPos.x << _chromo.m_currentPos.y << std::endl;				//
+																																																			//	
 	for (int i = 0; i < _chromo.m_instructions.size(); i++)																							//	for every m_instruction in _chromo 
 	{
 		//calculating m_nextPos
@@ -73,7 +73,7 @@ float NNetwork::FitnessMethod1(chromosome _chromo, std::vector<std::vector<int>>
 		case 0:			//	UP
 		{
 			_chromo.m_nextPos.y++;
-		}	
+		}
 		break;
 		case 1:			//	RIGHT
 		{
@@ -94,17 +94,20 @@ float NNetwork::FitnessMethod1(chromosome _chromo, std::vector<std::vector<int>>
 
 		// is the next pos in a wall
 
-		if (_map->at(_chromo.m_nextPos.x).at(_chromo.m_nextPos.y))
+		if (!(_chromo.m_nextPos.x < 0) && !(_chromo.m_nextPos.y < 0) &&																			//	Checking the bounds of the map vector
+			!(_chromo.m_nextPos.x > _map->size()) && !(_chromo.m_nextPos.y > _map->at(0).size()))							//	to prvent access violations
 		{
-			_chromo.m_currentPos = _chromo.m_nextPos;
+			if (_map->at(_chromo.m_nextPos.x).at(_chromo.m_nextPos.y))																			//	"Wall checking" 
+			{
+				_chromo.m_currentPos = _chromo.m_nextPos;
+			}
 		}
 	}
-	std::cout << "End Cood" << _chromo.m_currentPos.x << _chromo.m_currentPos.y << std::endl;
+	std::cout << "End Coord" << _chromo.m_currentPos.x << _chromo.m_currentPos.y << std::endl;
+		//	calculate fitness
 
-	//	calculate fitness
-
-	_chromo.m_fitness = 1 / (abs(_chromo.m_currentPos.x - m_endPoint.x) + (_chromo.m_currentPos.y - m_endPoint.y) + 1);
-	std::cout << "m_fitness" << _chromo.m_fitness;
+		_chromo.m_fitness = 1.0f / (abs((float)_chromo.m_currentPos.x - (float)m_endPoint.x) + abs(((float)_chromo.m_currentPos.y - (float)m_endPoint.y) + 1));
+		std::cout << "m_fitness : " << _chromo.m_fitness;
 
 	return 0.0f;
 }

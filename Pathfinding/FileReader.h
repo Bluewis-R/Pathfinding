@@ -11,7 +11,6 @@ private:
 	std::fstream m_file;
 	std::string m_filePath;
 	std::vector<std::vector<int>> m_layout;
-	
 
 public:
 	FileReader(std::string _path);
