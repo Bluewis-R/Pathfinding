@@ -3,8 +3,11 @@
 #include <random>
 #include <time.h>
 #include <vector>
+#include <Windows.h>
 
 #include <iostream>
+
+
 
 class Maps;
 
@@ -45,6 +48,8 @@ public:
 	float CalculateFitnessMethod1(chromosome _chromo);
 	float FitnessMethod1(chromosome _chromo, std::vector<std::vector<int>>* _map);
 	chromosome GetChromosome(int _i) { return m_chromosomes.at(_i); }
+	void Draw(std::vector<std::vector<int>>* _map, chromosome _chromo);
+
 };
 
 

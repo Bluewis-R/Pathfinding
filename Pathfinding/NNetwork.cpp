@@ -92,10 +92,17 @@ float NNetwork::FitnessMethod1(chromosome _chromo, std::vector<std::vector<int>>
 		break;
 		}
 
+		Draw(_map, _chromo);
+
+
+
+
+
+
 		// is the next pos in a wall
 
-		if (!(_chromo.m_nextPos.x < 0) && !(_chromo.m_nextPos.y < 0) &&																			//	Checking the bounds of the map vector
-			!(_chromo.m_nextPos.x > _map->size()) && !(_chromo.m_nextPos.y > _map->at(0).size()))							//	to prvent access violations
+		if (_chromo.m_nextPos.x >= 0 && _chromo.m_nextPos.y >= 0 &&																			//	Checking the bounds of the map vector
+			_chromo.m_nextPos.x <= _map->size() && _chromo.m_nextPos.y <= _map->at(0).size())							//	to prvent access violations
 		{
 			if (_map->at(_chromo.m_nextPos.x).at(_chromo.m_nextPos.y))																			//	"Wall checking" 
 			{
@@ -115,7 +122,29 @@ float NNetwork::FitnessMethod1(chromosome _chromo, std::vector<std::vector<int>>
 
 
 
-
+void NNetwork::Draw(std::vector<std::vector<int>>* _map, chromosome _chromo)
+{
+	system("CLS");
+	for (int i = 0; i < _map->size(); i++)
+	{
+		for (int j = 0; j < _map->at(0).size(); j++)
+		{
+			if (_chromo.m_currentPos.x == i && _chromo.m_currentPos.y == j)
+			{
+				std::cout << "* ";
+				
+				//prtin curretn pos
+			}
+			else
+			{
+				//pritn wall or empty
+				std::cout << _map->at(i).at(j) << " ";
+			}
+		}
+		std::cout << std::endl;
+	}
+	Sleep(100);
+}
 
 
 

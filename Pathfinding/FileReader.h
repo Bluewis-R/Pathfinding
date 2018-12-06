@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <exception>
+#include <array>
 
 class Maps;
 

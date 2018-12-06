@@ -1,7 +1,6 @@
 #include "FileReader.h"
 #include "Maps.h"
 
-#include <array>
 
 FileReader::FileReader(std::string _path)
 {
@@ -11,19 +10,17 @@ FileReader::FileReader(std::string _path)
 void FileReader::ReadFile(std::string _path, std::vector<std::vector<int>>* _map)			//	FILEREADER
 {																																											//	
 	m_file.open(_path);																																	//	This function take the path of the file
-	// error checking needed?																														//	and the pointer to the vector it is to
-																																											//	
+	if (m_file.is_open() == false)																											//	and the pointer to the vector it is to
+	{
+		throw std::exception();
+	}																																										//	
 																																											//	be stored in.
-	char tempChar;																																			//	The File is opened and is dumped into
-	//int tempSize[2]{ 0, 0 };																													//	a temporary vector.
+	char tempChar;																																			//	a temporary vector.
 	std::array<int, 2> tempSize = { 0,0 };
-	//tempSize.at(0) = 0;
-	//tempSize.at(1) = 0;
-
 																																											//	
 	std::vector<char> data;																															//	The size of the map's x and y are stored
 	std::vector<int> map;																																//	in an array and the starting point of
-	//	importing the raw data																													//	the map data is recorded.
+																																											//	the map data is recorded.
 	while (m_file.get(tempChar))																												//	
 	{																																										//	Finaly the intergers are pushed back into a
 		data.push_back(tempChar - 48);																										//	a temporary vector that is pushed back into
@@ -31,18 +28,21 @@ void FileReader::ReadFile(std::string _path, std::vector<std::vector<int>>* _map
 	m_file.close();
 
 	int k = 0;
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 2; i++)		// out of range memory check
 	{
-		if ((int)data.at(k + 1) >= 0)
+		if (k < data.size())
 		{
-			tempSize.at(k + i) += data.at(k) * 10;
-			tempSize.at(k + i) += data.at(k + 1);
-			k += 3;
-		}
-		else
-		{
-			tempSize.at(i) += data.at(k);
-			k += 2;
+			if ((int)data.at(k + 1) >= 0)
+			{
+				tempSize.at(k + i) += data.at(k) * 10;
+				tempSize.at(k + i) += data.at(k + 1);
+				k += 3;
+			}
+			else
+			{
+				tempSize.at(i) += data.at(k);
+				k += 2;
+			}
 		}
 	}
 
@@ -62,10 +62,8 @@ void FileReader::ReadFile(std::string _path, std::vector<std::vector<int>>* _map
 		for (int j = 0; j < tempSize.at(1); j++)
 		{
 
-			temp.push_back(map.at((i*tempSize.at(0))+j));
+			temp.push_back(map.at((i*(2+tempSize.at(0)))+j));
 		}
 		_map->push_back(temp);
 	}
-
-	//sdhgva
 }
