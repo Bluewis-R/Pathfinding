@@ -1,1 +1,21 @@
-﻿  Pathfinding.vcxproj -> D:\UNIVERSITY\Pathfinding\Debug\Pathfinding.exe
+﻿  GeneticAlgorithm.cpp
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(8): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(16): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(32): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(41): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(43): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(61): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(93): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(117): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(130): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(132): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(157): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(164): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(192): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(197): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(199): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(214): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(224): warning C4018: '<': signed/unsigned mismatch
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(231): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+\\bournemouth.ac.uk\data\student\home\scitech\s5063237\desktop\pathfinding\pathfinding\geneticalgorithm.cpp(233): warning C4018: '<': signed/unsigned mismatch
+  Pathfinding.vcxproj -> \\bournemouth.ac.uk\data\student\home\SciTech\s5063237\Desktop\Pathfinding\Debug\Pathfinding.exe

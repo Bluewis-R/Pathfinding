@@ -112,9 +112,14 @@ void GeneticAlgorithm::FitnessMethod1(chromosome &_chromo)																						
 	}
 		//	calculating fitness
 		_chromo.m_fitness = 1.0f / (float)(abs(_chromo.m_currentPos.x - (float)m_endPoint.x) + abs((_chromo.m_currentPos.y - (float)m_endPoint.y) + 1));
-		std::cout << "m_fitness : " << _chromo.m_fitness;
-
-	
+		std::cout << "m_fitness : " << _chromo.m_fitness << " | ";
+		std::cout << "instructions : ";
+		for (int k = 0; k < _chromo.m_instructions.size(); k++)
+		{
+			std::cout << _chromo.m_instructions.at(k);
+		}
+		std::cout << std::endl;
+			
 }
 
 //	this is a function for debugging purposes that draws the currecnt pos
@@ -143,22 +148,25 @@ void GeneticAlgorithm::Draw(std::vector<std::vector<int>>* _map, chromosome _chr
 }
 
 
-//	the chromosomes are then breed																															//
+//	the chromosomes are then breed
 void GeneticAlgorithm::Breed()																							
 {
-	std::vector<chromosome> offspring;																														//	creatiing an temporary array chro
+
+	//	creating an empty offsprings
+	std::vector<chromosome> offspring;																													
 	for (int i = 0; i < m_chromosomes.size(); i++)
 	{
 		chromosome c;
 		offspring.push_back(c);
 	}
-																																																//	selecting indiviuals 
-	for (int i = 0; i < m_chromosomes.size(); i += 2)																							//	this cycles through all of the chromosomes
+
+	//	filling up offspring vector with the 'bred' ofspring
+	for (int i = 0; i < m_chromosomes.size(); i += 2)
 	{
 			
-		chromosome parent1 = CalculateIndividual();
-		chromosome parent2 = CalculateIndividual();
-
+		chromosome parent1, parent2;
+		parent1 = CalculateIndividual();
+		parent2 = CalculateIndividual();
 			
 		if ((double)rand() / (RAND_MAX + 1.0) < 0.7)																								//	The cross overrate is hard coded at this point in time
 		{																																														//	
@@ -178,21 +186,26 @@ void GeneticAlgorithm::Breed()
 			offspring.at(i).m_instructions = parent1.m_instructions;
 			offspring.at(i+1).m_instructions = parent2.m_instructions;
 		}
+	}
 
-		
-		for (int j = 0; j < m_chromosomes.size(); j++)																							//	Setting Offsprings
-		{																																														//	
-			m_chromosomes.at(j) = offspring.at(i);																										//	
-		}																																														//	
-
+	//	setting offspring to chromosomes
+	for (int i = 0; i < m_chromosomes.size(); i++)
+	{
+		m_chromosomes.at(i) = offspring.at(i);
+	}
+	//	mustation
+	for (int i = 0; i < m_chromosomes.size(); i++)
+	{
 		for (int j = 0; j < m_chromosomes.at(i).m_instructions.size(); j++)
-		{	
+		{
 			if ((double)rand() / (RAND_MAX + 1.0) < 0.001)
-			{	
-				m_chromosomes.at(i).m_instructions.at(j) = rand()%4;																		//	Mutation
-			}																																													//
+			{
+				m_chromosomes.at(i).m_instructions.at(j) = rand() % 4;
+				std::cout << "mutation";
+			}
 		}
 	}
+
 }
 
 chromosome GeneticAlgorithm::CalculateIndividual()
@@ -201,7 +214,7 @@ chromosome GeneticAlgorithm::CalculateIndividual()
 	for (int i = 0; i < m_chromosomes.size(); i++)
 	{
 		float tempFloat = 0;
-		for (int j = 0; j < i; j++)
+		for (int j = 0; j < i+1; j++)
 		{
 			tempFloat += m_chromosomes.at(j).m_fitness;
 		}
@@ -212,16 +225,19 @@ chromosome GeneticAlgorithm::CalculateIndividual()
 	{
 		totalFitness += m_chromosomes.at(i).m_fitness;
 	}
-	float t = (totalFitness / abs(rand()));									// BUG HERE*
+	//(double)rand() / (RAND_MAX + 1.0) < 0.001);
 
+	//float t = (totalFitness / abs(rand()));									// BUG HERE*
+	float t = totalFitness * (double)rand() / (RAND_MAX + 1.0);
 
 	for (int i = 0; i < m_chromosomes.size(); i++)																								// calculating the idiviual
 	{
-		if (t < indiviuals.at(i))
+		if (indiviuals.at(i) > t )
 		{
 			return m_chromosomes.at(i);
 		}
 	}
+	throw std::exception();
 }	
 
 /*

@@ -22,11 +22,9 @@ int main()
 
 	for (float exit = 0.0; exit < 0.999;)
 	{
+		std::cout << std::endl << exit << std::endl;
 		GAlgorithm->GeneticAlgorithm1();
 		exit += 0.001;
-		std::cout << std::endl << exit << std::endl;
-
-		
 	}
 
 	

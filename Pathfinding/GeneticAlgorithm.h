@@ -6,6 +6,7 @@
 
 #include <iostream>
 
+#include <exception>
 
 
 class Maps;
@@ -19,7 +20,7 @@ struct coord
 struct chromosome																																							//	STUCTURE OF m_instructions		
 {																																															/*																	*/		
 	std::vector<int> m_instructions = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };				/*							 /|\								*/
-	float m_fitness;																																						/*							  0									*/
+	float m_fitness = 0;																																						/*							  0									*/
 	int m_x= 0;																																									/*						<-3		1->							*/
 	int m_y = 0;																																								/*								2									*/
 	coord m_currentPos;																																					/*							 \|/								*/
