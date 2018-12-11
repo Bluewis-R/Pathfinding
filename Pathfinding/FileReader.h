@@ -18,6 +18,5 @@ public:
 	FileReader(std::string _path);
 	void ReadFile(std::string _path, std::vector<std::vector<int>>* _map);
 	
-	
 
 };

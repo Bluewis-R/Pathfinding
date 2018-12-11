@@ -1,5 +1,5 @@
 #include <iostream>
-#include "NNetwork.h"
+#include "GeneticAlgorithm.h"
 #include "FileReader.h"
 #include "Maps.h"
 
@@ -12,12 +12,28 @@ int main()
 	FileReader levelLoader("Path1.txt");
 	levelLoader.ReadFile("Path1.txt", maps->NewMap(0));
 
-	NNetwork network;
-	network.CreateChromosomes();
+	GeneticAlgorithm* GAlgorithm = new GeneticAlgorithm(maps->getMaps());
+	GAlgorithm->CreateChromosomes();
+	
+	//temp testing chromo
+	chromosome c;
+	c.m_instructions = { 0, 2, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2 }; //*/
+	//GAlgorithm.GetChromosome(0)
 
-	network.FitnessMethod1(network.GetChromosome(0), maps->GetMap(0));
+	for (float exit = 0.0; exit < 0.999;)
+	{
+		GAlgorithm->GeneticAlgorithm1();
+		exit += 0.001;
+		std::cout << std::endl << exit << std::endl;
 
+		
+	}
 
+	
+
+	//GAlgorithm->FitnessMethod1(c);
+
+	delete GAlgorithm;
 	delete maps;
 	
 	char p;
