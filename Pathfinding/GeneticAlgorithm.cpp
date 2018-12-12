@@ -11,15 +11,21 @@ GeneticAlgorithm::GeneticAlgorithm(std::vector<std::vector<std::vector<int>>*>* 
 	m_currentMap = m_maps->at(0);
 }
 
-void GeneticAlgorithm::GeneticAlgorithm1()
+bool GeneticAlgorithm::GeneticAlgorithm1()
 {
 	for (int i = 0; i < m_chromosomes.size(); i++)																											//	loops through all _choromosomes and
 	{																																																		//	creates calculates there fitness value
 		FitnessMethod1(m_chromosomes.at(i));
 	}
 	Breed();
-	//IncreaseChromosomes();
+	CreateNewChromosomes();
+	DeleteChromosomes();
 
+	if (m_goal)
+	{
+		return false;
+	}
+	return true;
 }
 
 void GeneticAlgorithm::CreateChromosomes()																														//	This fucntion creates the four chromosomes
@@ -111,7 +117,17 @@ void GeneticAlgorithm::FitnessMethod1(chromosome &_chromo)																						
 		//std::cout << std::endl;
 	}
 		//	calculating fitness
-		_chromo.m_fitness = 1.0f / (float)(abs(_chromo.m_currentPos.x - (float)m_endPoint.x) + abs((_chromo.m_currentPos.y - (float)m_endPoint.y) + 1));
+		float a = abs(_chromo.m_currentPos.x - (float)m_endPoint.x);
+		float b = abs(_chromo.m_currentPos.y - (float)m_endPoint.y);
+		_chromo.m_fitness = 1.0f / ((float)a + (float)b + 1.0f);
+
+		if (_chromo.m_fitness == 1)
+		{
+			m_goal = true;
+			m_endChromosome = _chromo;
+		}
+
+		/*
 		std::cout << "m_fitness : " << _chromo.m_fitness << " | ";
 		std::cout << "instructions : ";
 		for (int k = 0; k < _chromo.m_instructions.size(); k++)
@@ -119,7 +135,7 @@ void GeneticAlgorithm::FitnessMethod1(chromosome &_chromo)																						
 			std::cout << _chromo.m_instructions.at(k);
 		}
 		std::cout << std::endl;
-			
+		*/	
 }
 
 //	this is a function for debugging purposes that draws the currecnt pos
@@ -168,7 +184,7 @@ void GeneticAlgorithm::Breed()
 		parent1 = CalculateIndividual();
 		parent2 = CalculateIndividual();
 			
-		if ((double)rand() / (RAND_MAX + 1.0) < 0.7)																								//	The cross overrate is hard coded at this point in time
+		if ((double)rand() / (RAND_MAX + 1.0) < 0.8)																								//	The cross overrate is hard coded at this point in time
 		{																																														//	
 			for (int o = 0; o < 8; o++)																																//	
 			{																																													//	This section takes the first half of both parents 
@@ -198,13 +214,16 @@ void GeneticAlgorithm::Breed()
 	{
 		for (int j = 0; j < m_chromosomes.at(i).m_instructions.size(); j++)
 		{
-			if ((double)rand() / (RAND_MAX + 1.0) < 0.001)
+			if ((double)rand() / (RAND_MAX + 1.0) < 0.005)
 			{
 				m_chromosomes.at(i).m_instructions.at(j) = rand() % 4;
-				std::cout << "mutation";
+				//std::cout << "mutation of direction";
 			}
 		}
 	}
+	//	
+
+
 
 }
 
@@ -232,18 +251,44 @@ chromosome GeneticAlgorithm::CalculateIndividual()
 
 	for (int i = 0; i < m_chromosomes.size(); i++)																								// calculating the idiviual
 	{
-		if (indiviuals.at(i) > t )
+		if (indiviuals.at(i) > t)
 		{
 			return m_chromosomes.at(i);
 		}
 	}
-	throw std::exception();
+		throw std::exception();	
 }	
 
-/*
-float t = (totalFitness / abs(rand()));
-if (t <= 0 && t >)
+//	randomly decides to create two new chromosomes or not
+void GeneticAlgorithm::CreateNewChromosomes()
 {
+	if (((double)rand() / (RAND_MAX + 1.0)) < 0.001)
+	{
+		chromosome tempChromo;
+		m_chromosomes.push_back(tempChromo);
+		m_chromosomes.push_back(tempChromo);
+	}
+}
+
+//	deletes a fraction of the chromosomes	('thanos' function)
+void GeneticAlgorithm::DeleteChromosomes()
+{
+	if ((double)rand() / (RAND_MAX + 1.0) < 0.001)																						//	1/ (4 + 80) = 0.03125
+	{
+		for (int i = 0; i < m_chromosomes.size(); i++)
+		{
+			if (i%4)
+			{
+				for (int j = 0; j < m_chromosomes.at(i).m_instructions.size(); j++)
+				{
+					m_chromosomes.at(i).m_instructions.at(j) = rand() % 4;
+				}
+			}
+
+		}
+
+		//std::cout << "m_chromosomes.size()" << m_chromosomes.size() << std::endl;
+	}
+	
 
 }
-	*/
