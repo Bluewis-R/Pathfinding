@@ -1,32 +1,77 @@
-/*
-
 // Astar.cpp
 // http://en.wikipedia.org/wiki/A*
 // Compiler: Dev-C++ 4.9.9.2
 // FB - 201012256
-#include <iostream>
-#include <iomanip>
-#include <queue>
-#include <string>
-#include <math.h>
-#include <ctime>
+
+#include "Astar.h"
+
 using namespace std;
 
-const int n = 60; // horizontal size of the map
-const int m = 60; // vertical size size of the map
+const int n = 60;											// horizontal size of the map
+const int m = 60;											// vertical size size of the map
 static int map[n][m];
-static int closed_nodes_map[n][m]; // map of closed (tried-out) nodes
-static int open_nodes_map[n][m]; // map of open (not-yet-tried) nodes
-static int dir_map[n][m]; // map of directions
-const int dir = 8; // number of possible directions to go at any position
-// if dir==4
-//static int dx[dir]={1, 0, -1, 0};
-//static int dy[dir]={0, 1, 0, -1};
-// if dir==8
-static int dx[dir] = { 1, 1, 0, -1, -1, -1, 0, 1 };
-static int dy[dir] = { 0, 1, 1, 1, 0, -1, -1, -1 };
+static int closed_nodes_map[n][m];		// map of closed (tried-out) nodes
+static int open_nodes_map[n][m];			// map of open (not-yet-tried) nodes
+static int dir_map[n][m];							// map of directions
+const int dir = 4;										// number of possible directions to go at any position
+																			// if dir==4
+static int dx[dir]={1, 0, -1, 0};
+static int dy[dir]={0, 1, 0, -1};
+																			// if dir==8
+																			// static int dx[dir] = { 1, 1, 0, -1, -1, -1, 0, 1 };
+																			//static int dy[dir] = { 0, 1, 1, 1, 0, -1, -1, -1 };
 
+class node
+{
+	// current position
+	int xPos;
+	int yPos;
+	// total distance already travelled to reach the node
+	int level;
+	// priority=level+remaining distance estimate
+	int priority;  // smaller: higher priority
 
+public:
+	node(int xp, int yp, int d, int p)
+	{
+		xPos = xp; yPos = yp; level = d; priority = p;
+	}
+
+	int getxPos() const { return xPos; }
+	int getyPos() const { return yPos; }
+	int getLevel() const { return level; }
+	int getPriority() const { return priority; }
+
+	void updatePriority(const int & xDest, const int & yDest)
+	{
+		priority = level + estimate(xDest, yDest) * 10; //A*
+	}
+
+	// give better priority to going strait instead of diagonally
+	void nextLevel(const int & i) // i: direction
+	{
+		level += (dir == 8 ? (i % 2 == 0 ? 10 : 14) : 10);
+	}
+
+	// Estimation function for the remaining distance to the goal.
+	const int & estimate(const int & xDest, const int & yDest) const
+	{
+		static int xd, yd, d;
+		xd = xDest - xPos;
+		yd = yDest - yPos;
+
+		// Euclidian Distance
+		d = static_cast<int>(sqrt(xd*xd + yd * yd));
+
+		// Manhattan distance
+		//d=abs(xd)+abs(yd);
+
+		// Chebyshev distance
+		//d=max(abs(xd), abs(yd));
+
+		return(d);
+	}
+};
 
 // Determine priority (in the priority queue)
 bool operator<(const node & a, const node & b)
@@ -36,8 +81,7 @@ bool operator<(const node & a, const node & b)
 
 // A-star algorithm.
 // The route returned is a string of direction digits.
-string pathFind(const int & xStart, const int & yStart,
-	const int & xFinish, const int & yFinish)
+string pathFind(const int & xStart, const int & yStart, const int & xFinish, const int & yFinish)
 {
 	static priority_queue<node> pq[2]; // list of open (not-yet-tried) nodes
 	static int pqi; // pq index
@@ -48,9 +92,9 @@ string pathFind(const int & xStart, const int & yStart,
 	pqi = 0;
 
 	// reset the node maps
-	for (y = 0; y < m; y++)
+	for (y = 0; y<m; y++)
 	{
-		for (x = 0; x < n; x++)
+		for (x = 0; x<n; x++)
 		{
 			closed_nodes_map[x][y] = 0;
 			open_nodes_map[x][y] = 0;
@@ -63,7 +107,7 @@ string pathFind(const int & xStart, const int & yStart,
 	pq[pqi].push(*n0);
 	open_nodes_map[x][y] = n0->getPriority(); // mark it on the open nodes map
 
-	// A* search
+																						// A* search
 	while (!pq[pqi].empty())
 	{
 		// get the current node w/ the highest priority
@@ -102,7 +146,7 @@ string pathFind(const int & xStart, const int & yStart,
 		}
 
 		// generate moves (child nodes) in all possible directions
-		for (i = 0; i < dir; i++)
+		for (i = 0; i<dir; i++)
 		{
 			xdx = x + dx[i]; ydy = y + dy[i];
 
@@ -123,7 +167,7 @@ string pathFind(const int & xStart, const int & yStart,
 					// mark its parent node direction
 					dir_map[xdx][ydy] = (i + dir / 2) % dir;
 				}
-				else if (open_nodes_map[xdx][ydy] > m0->getPriority())
+				else if (open_nodes_map[xdx][ydy]>m0->getPriority())
 				{
 					// update the priority info
 					open_nodes_map[xdx][ydy] = m0->getPriority();
@@ -142,8 +186,8 @@ string pathFind(const int & xStart, const int & yStart,
 					}
 					pq[pqi].pop(); // remove the wanted node
 
-					// empty the larger size pq to the smaller one
-					if (pq[pqi].size() > pq[1 - pqi].size()) pqi = 1 - pqi;
+												 // empty the larger size pq to the smaller one
+					if (pq[pqi].size()>pq[1 - pqi].size()) pqi = 1 - pqi;
 					while (!pq[pqi].empty())
 					{
 						pq[1 - pqi].push(pq[pqi].top());
@@ -165,17 +209,17 @@ int steve()
 	srand(time(NULL));
 
 	// create empty map
-	for (int y = 0; y < m; y++)
+	for (int y = 0; y<m; y++)
 	{
-		for (int x = 0; x < n; x++) map[x][y] = 0;
+		for (int x = 0; x<n; x++) map[x][y] = 0;
 	}
 
 	// fillout the map matrix with a '+' pattern
-	for (int x = n / 8; x < n * 7 / 8; x++)
+	for (int x = n / 8; x<n * 7 / 8; x++)
 	{
 		map[x][m / 2] = 1;
 	}
-	for (int y = m / 8; y < m * 7 / 8; y++)
+	for (int y = m / 8; y<m * 7 / 8; y++)
 	{
 		map[n / 2][y] = 1;
 	}
@@ -208,13 +252,13 @@ int steve()
 	cout << route << endl << endl;
 
 	// follow the route on the map and display it 
-	if (route.length() > 0)
+	if (route.length()>0)
 	{
 		int j; char c;
 		int x = xA;
 		int y = yA;
 		map[x][y] = 2;
-		for (int i = 0; i < route.length(); i++)
+		for (int i = 0; i<route.length(); i++)
 		{
 			c = route.at(i);
 			j = atoi(&c);
@@ -225,9 +269,9 @@ int steve()
 		map[x][y] = 4;
 
 		// display the map with the route
-		for (int y = 0; y < m; y++)
+		for (int y = 0; y<m; y++)
 		{
-			for (int x = 0; x < n; x++)
+			for (int x = 0; x<n; x++)
 				if (map[x][y] == 0)
 					cout << ".";
 				else if (map[x][y] == 1)
@@ -244,5 +288,3 @@ int steve()
 	getchar(); // wait for a (Enter) keypress  
 	return(0);
 }
-
-*/

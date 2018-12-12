@@ -3,6 +3,7 @@
 #include "FileReader.h"
 #include "Maps.h"
 
+#include "AStar.h"
 
 int main()
 {
