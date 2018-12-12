@@ -21,23 +21,44 @@ int main()
 	c.m_instructions = { 0, 2, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2 }; //*/
 	//GAlgorithm.GetChromosome(0)
 
-	int itteration = 0;
-	while (GAlgorithm->GeneticAlgorithm1())
+	std::cout << "Enter either (a) or (g) : ";
+	char inpt;
+	std::cin >> inpt;
+
+	for (bool exit = false; exit != true;)
 	{
-		itteration++;
-		if (!(itteration % 10))
+		if (inpt == 'a' || inpt == 'A')
 		{
-			std::cout << "itteration : " << itteration << std::endl;
+			steve(maps->GetMap(0));
 		}
+		else if (inpt == 'g' || inpt == 'G' || inpt == 'ga' || inpt == 'GA')
+		{
+			int itteration = 0;
+			//	to stop bug
+			GAlgorithm->FitnessMethod1();
+			while (GAlgorithm->GeneticAlgorithm1())
+			{
+				itteration++;
+				if (!(itteration % 200))
+				{
+					std::cout << "itteration : " << itteration << std::endl;
+					std::vector<chromosome>* c = new std::vector<chromosome>();
+					c = GAlgorithm->GetChromosomes();
+					for (int i = 0; i < c->size(); i++)
+					{
+						std::cout << c->at(i).m_fitness << std::endl;
+					}
+				}
+			}
+		}
+		exit = true;
 	}
 
 
-	for (float exit = 0.0; exit < 0.999;)
-	{
-		std::cout << std::endl << exit << std::endl;
-		
-		exit += 0.001;
-	}
+
+
+
+
 
 	
 

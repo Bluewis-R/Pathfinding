@@ -1,37 +1,25 @@
-﻿  AStar.cpp
-d:\university\pathfinding\pathfinding\astar.h(9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-d:\university\pathfinding\pathfinding\astar.h(9): error C2146: syntax error: missing ';' before identifier 'pathFind'
-d:\university\pathfinding\pathfinding\astar.cpp(84): error C2872: 'string': ambiguous symbol
-  d:\university\pathfinding\pathfinding\astar.h(9): note: could be 'int string'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(4347): note: or       'std::string'
-d:\university\pathfinding\pathfinding\astar.cpp(84): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-d:\university\pathfinding\pathfinding\astar.cpp(84): error C2086: 'int string': redefinition
-  d:\university\pathfinding\pathfinding\astar.h(9): note: see declaration of 'string'
-d:\university\pathfinding\pathfinding\astar.cpp(84): error C2146: syntax error: missing ';' before identifier 'pathFind'
-d:\university\pathfinding\pathfinding\astar.cpp(85): error C2143: syntax error: missing ';' before '{'
-d:\university\pathfinding\pathfinding\astar.cpp(85): error C2447: '{': missing function header (old-style formal list?)
-d:\university\pathfinding\pathfinding\astar.cpp(209): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\university\pathfinding\pathfinding\astar.cpp(246): error C2872: 'string': ambiguous symbol
-  d:\university\pathfinding\pathfinding\astar.h(9): note: could be 'int string'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(4347): note: or       'std::string'
-d:\university\pathfinding\pathfinding\astar.cpp(246): error C2146: syntax error: missing ';' before identifier 'route'
-d:\university\pathfinding\pathfinding\astar.cpp(246): error C2065: 'route': undeclared identifier
-d:\university\pathfinding\pathfinding\astar.cpp(246): error C3861: 'pathFind': identifier not found
-d:\university\pathfinding\pathfinding\astar.cpp(247): error C2065: 'route': undeclared identifier
-d:\university\pathfinding\pathfinding\astar.cpp(252): error C2065: 'route': undeclared identifier
-d:\university\pathfinding\pathfinding\astar.cpp(255): error C2065: 'route': undeclared identifier
-d:\university\pathfinding\pathfinding\astar.cpp(255): error C2228: left of '.length' must have class/struct/union
-  d:\university\pathfinding\pathfinding\astar.cpp(255): note: type is 'unknown-type'
-d:\university\pathfinding\pathfinding\astar.cpp(261): error C2065: 'route': undeclared identifier
-d:\university\pathfinding\pathfinding\astar.cpp(261): error C2228: left of '.length' must have class/struct/union
-  d:\university\pathfinding\pathfinding\astar.cpp(261): note: type is 'unknown-type'
-d:\university\pathfinding\pathfinding\astar.cpp(263): error C2065: 'route': undeclared identifier
-d:\university\pathfinding\pathfinding\astar.cpp(263): error C2228: left of '.at' must have class/struct/union
-  d:\university\pathfinding\pathfinding\astar.cpp(263): note: type is 'unknown-type'
-  Main.cpp
-d:\university\pathfinding\pathfinding\astar.h(7): warning C4099: 'node': type name first seen using 'struct' now seen using 'class'
-  d:\university\pathfinding\pathfinding\geneticalgorithm.h(32): note: see declaration of 'node'
-d:\university\pathfinding\pathfinding\astar.h(9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-d:\university\pathfinding\pathfinding\astar.h(9): error C2146: syntax error: missing ';' before identifier 'pathFind'
-d:\university\pathfinding\pathfinding\main.cpp(39): warning C4305: '+=': truncation from 'double' to 'float'
-  Generating Code...
+﻿  GeneticAlgorithm.cpp
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(8): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(39): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(48): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(50): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(52): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(70): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(100): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(128): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(130): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(154): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(161): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(170): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(175): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(189): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(194): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(206): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(208): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(226): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(236): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(243): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(245): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(271): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(275): warning C4018: '<': signed/unsigned mismatch
+  Pathfinding.vcxproj -> D:\UNIVERSITY\Pathfinding\Debug\Pathfinding.exe

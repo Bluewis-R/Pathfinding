@@ -50,7 +50,8 @@ public:
 	GeneticAlgorithm(std::vector<std::vector<std::vector<int>>*>* _map);
 	bool GeneticAlgorithm1();
 	void CreateChromosomes();
-	void FitnessMethod1(chromosome &_chromo);
+	std::vector<chromosome>* GetChromosomes() { return &m_chromosomes; }
+	void FitnessMethod1();
 	chromosome GetChromosome(int _i) { return m_chromosomes.at(_i); }
 	void Draw(std::vector<std::vector<int>>* _map, chromosome _chromo);
 	void Breed();

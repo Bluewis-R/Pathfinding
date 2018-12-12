@@ -13,13 +13,14 @@ GeneticAlgorithm::GeneticAlgorithm(std::vector<std::vector<std::vector<int>>*>* 
 
 bool GeneticAlgorithm::GeneticAlgorithm1()
 {
-	for (int i = 0; i < m_chromosomes.size(); i++)																											//	loops through all _choromosomes and
-	{																																																		//	creates calculates there fitness value
-		FitnessMethod1(m_chromosomes.at(i));
-	}
+	//for (int i = 0; i < m_chromosomes.size(); i++)																											//	loops through all _choromosomes and
+	//{																																																		//	creates calculates there fitness value
+	
+	//}
 	Breed();
 	CreateNewChromosomes();
 	DeleteChromosomes();
+	FitnessMethod1();
 
 	if (m_goal)
 	{
@@ -42,100 +43,81 @@ void GeneticAlgorithm::CreateChromosomes()																														//	This 
 	}
 }
 
-void GeneticAlgorithm::FitnessMethod1(chromosome &_chromo)																						//	CALCULATING FITNESS
-{																																																			//
-	for (int i = 0; i < m_currentMap->size(); i++)																											//	Cycling through the mpa to find start and end point.
-	{																																																		//	
-		for (int j = 0; j < m_currentMap->at(i).size(); j++)																							//	
-		{																																																	//	
-			if (m_currentMap->at(i).at(j) == 2)																															//	
-			{																																																//	
-				m_startPoint.x = i;																																						//	
-				m_startPoint.y = j;																																						//	
-			}																																																//	
-			if (m_currentMap->at(i).at(j) == 3)																															//	
-			{																																																//	
-				m_endPoint.x = i;																																							//	
-				m_endPoint.y = j;																																							//	
-			}																																																//	
-		}																																																	//	
-	}
-
-
-	_chromo.m_currentPos = m_startPoint;																																//	This section calculates the next position 
-																																																			//	and then checks and rejects positions
-	for (int i = 0; i < _chromo.m_instructions.size(); i++)																							//	that collide with "walls"
-	{																																																		//	
-		//calculating m_nextPos
-		_chromo.m_nextPos = _chromo.m_currentPos;
-		switch (_chromo.m_instructions.at(i))
-		{
-		case 0:			//	UP
-		{
-			_chromo.m_nextPos.x--;
-		}
-		break;
-		case 1:			//	RIGHT
-		{
-			_chromo.m_nextPos.y++;
-		}
-		break;
-		case 2:			//	DOWN
-		{
-			_chromo.m_nextPos.x++;
-		}
-		break;
-		case 3:			//	LEFT
-		{
-			_chromo.m_nextPos.y--;
-		}
-		break;
+void GeneticAlgorithm::FitnessMethod1()																						//	CALCULATING FITNESS
+{							
+	for (int c = 0; c < m_chromosomes.size(); c++)
+	{
+		for (int i = 0; i < m_currentMap->size(); i++)																											//	Cycling through the mpa to find start and end point.
+		{																																																		//	
+			for (int j = 0; j < m_currentMap->at(i).size(); j++)																							//	
+			{																																																	//	
+				if (m_currentMap->at(i).at(j) == 2)																															//	
+				{																																																//	
+					m_startPoint.x = i;																																						//	
+					m_startPoint.y = j;																																						//	
+				}																																																//	
+				if (m_currentMap->at(i).at(j) == 3)																															//	
+				{																																																//	
+					m_endPoint.x = i;																																							//	
+					m_endPoint.y = j;																																							//	
+				}																																																//	
+			}																																																	//	
 		}
 
 
-		// is the next pos in a wall
-
-		if (_chromo.m_nextPos.x >= 0 && _chromo.m_nextPos.y >= 0 &&																								//	Checking the bounds of the map vector
-			_chromo.m_nextPos.x < m_currentMap->size() && _chromo.m_nextPos.y < m_currentMap->at(0).size())					//	to prvent access violations
-		{
-			if (m_currentMap->at(_chromo.m_nextPos.x).at(_chromo.m_nextPos.y) == 0)																	//	"Wall checking" 
+		m_chromosomes.at(c).m_currentPos = m_startPoint;																																//	This section calculates the next position 
+																																																				//	and then checks and rejects positions
+		for (int i = 0; i < m_chromosomes.at(c).m_instructions.size(); i++)																							//	that collide with "walls"
+		{																																																		//	
+																																																				//calculating m_nextPos
+			m_chromosomes.at(c).m_nextPos = m_chromosomes.at(c).m_currentPos;
+			switch (m_chromosomes.at(c).m_instructions.at(i))
 			{
-				_chromo.m_currentPos = _chromo.m_nextPos;
+			case 0:			//	UP
+			{
+				m_chromosomes.at(c).m_nextPos.x--;
 			}
-		}
-		/*
-		for (int i = 0; i < _chromo.m_instructions.size(); i++)
-		{
-			std::cout << _chromo.m_instructions.at(i);
-		}
-		*/
-		// BUG TESTING
-		//std::cout << "Instruction(" << i << ") : " << _chromo.m_instructions.at(i) << std::endl;
-		//std::cout << "Current pos : " << _chromo.m_currentPos.x << ", " << _chromo.m_currentPos.y << std::endl;
-		//std::cout << "Next pos : " << _chromo.m_nextPos.x << ", " << _chromo.m_nextPos.y;
-		//Draw(_map, _chromo);
-		//std::cout << std::endl;
-	}
-		//	calculating fitness
-		float a = abs(_chromo.m_currentPos.x - (float)m_endPoint.x);
-		float b = abs(_chromo.m_currentPos.y - (float)m_endPoint.y);
-		_chromo.m_fitness = 1.0f / ((float)a + (float)b + 1.0f);
+			break;
+			case 1:			//	RIGHT
+			{
+				m_chromosomes.at(c).m_nextPos.y++;
+			}
+			break;
+			case 2:			//	DOWN
+			{
+				m_chromosomes.at(c).m_nextPos.x++;
+			}
+			break;
+			case 3:			//	LEFT
+			{
+				m_chromosomes.at(c).m_nextPos.y--;
+			}
+			break;
+			}
+			// is the next pos in a wall
 
-		if (_chromo.m_fitness == 1)
+			if (m_chromosomes.at(c).m_nextPos.x >= 0 && m_chromosomes.at(c).m_nextPos.y >= 0 &&																								//	Checking the bounds of the map vector
+				m_chromosomes.at(c).m_nextPos.x < m_currentMap->size() && m_chromosomes.at(c).m_nextPos.y < m_currentMap->at(0).size())					//	to prvent access violations
+			{
+				if (m_currentMap->at(m_chromosomes.at(c).m_nextPos.x).at(m_chromosomes.at(c).m_nextPos.y) == 0)																	//	"Wall checking" 
+				{
+					m_chromosomes.at(c).m_currentPos = m_chromosomes.at(c).m_nextPos;
+				}
+			}
+
+		}
+		//	calculating fitness
+		float a = fabs(m_chromosomes.at(c).m_currentPos.x - (float)m_endPoint.x);
+		float b = fabs(m_chromosomes.at(c).m_currentPos.y - (float)m_endPoint.y);
+		m_chromosomes.at(c).m_fitness = 1.0f / ((float)a + (float)b + 1.0f);
+
+		if (m_chromosomes.at(c).m_fitness == 1)
 		{
 			m_goal = true;
-			m_endChromosome = _chromo;
+			m_endChromosome = m_chromosomes.at(c);
 		}
-
-		/*
-		std::cout << "m_fitness : " << _chromo.m_fitness << " | ";
-		std::cout << "instructions : ";
-		for (int k = 0; k < _chromo.m_instructions.size(); k++)
-		{
-			std::cout << _chromo.m_instructions.at(k);
-		}
-		std::cout << std::endl;
-		*/	
+	}
+	
 }
 
 //	this is a function for debugging purposes that draws the currecnt pos
@@ -167,7 +149,6 @@ void GeneticAlgorithm::Draw(std::vector<std::vector<int>>* _map, chromosome _chr
 //	the chromosomes are then breed
 void GeneticAlgorithm::Breed()																							
 {
-
 	//	creating an empty offsprings
 	std::vector<chromosome> offspring;																													
 	for (int i = 0; i < m_chromosomes.size(); i++)
@@ -184,14 +165,14 @@ void GeneticAlgorithm::Breed()
 		parent1 = CalculateIndividual();
 		parent2 = CalculateIndividual();
 			
-		if ((double)rand() / (RAND_MAX + 1.0) < 0.8)																								//	The cross overrate is hard coded at this point in time
+		if ((double)rand() / (RAND_MAX + 1.0) < 0.9)																								//	The cross overrate is hard coded at this point in time
 		{																																														//	
-			for (int o = 0; o < 8; o++)																																//	
+			for (int o = 0; o < m_chromosomes.at(0).m_instructions.size()/2; o++)																																//									#####bugg herer#####
 			{																																													//	This section takes the first half of both parents 
 				offspring.at(i).m_instructions.at(o) = parent1.m_instructions.at(o);										//	and applies them to the first half of two offspring,
 				offspring.at(i+1).m_instructions.at(o) = parent2.m_instructions.at(o);									//	then applies the second half of the first parent
 			}																																													//	and aplies it to the SECOND ofspring and
-			for (int o = 7; o < 15; o++)																															//	vice versa of ofpring2
+			for (int o = m_chromosomes.at(0).m_instructions.size() / 2; o < m_chromosomes.at(0).m_instructions.size(); o++)																															//	vice versa of ofpring2
 			{																																													//
 				offspring.at(i).m_instructions.at(o) = parent2.m_instructions.at(o);										//	
 				offspring.at(i + 1).m_instructions.at(o) = parent1.m_instructions.at(o);								//	
@@ -209,12 +190,24 @@ void GeneticAlgorithm::Breed()
 	{
 		m_chromosomes.at(i) = offspring.at(i);
 	}
+	//	chance to add to the length of the chromosome
+	for (int i = 0; i < m_chromosomes.size(); i++)
+	{
+		if ((double)rand() / (RAND_MAX + 1.0) < 0.0001)
+		{
+			m_chromosomes.at(i).m_instructions.push_back(rand() % 4);
+			m_chromosomes.at(i).m_instructions.push_back(rand() % 4);
+		}
+	}
+
+
+
 	//	mustation
 	for (int i = 0; i < m_chromosomes.size(); i++)
 	{
 		for (int j = 0; j < m_chromosomes.at(i).m_instructions.size(); j++)
 		{
-			if ((double)rand() / (RAND_MAX + 1.0) < 0.005)
+			if ((double)rand() / (RAND_MAX + 1.0) < 0.01)
 			{
 				m_chromosomes.at(i).m_instructions.at(j) = rand() % 4;
 				//std::cout << "mutation of direction";
@@ -262,7 +255,7 @@ chromosome GeneticAlgorithm::CalculateIndividual()
 //	randomly decides to create two new chromosomes or not
 void GeneticAlgorithm::CreateNewChromosomes()
 {
-	if (((double)rand() / (RAND_MAX + 1.0)) < 0.001)
+	if (((double)rand() / (RAND_MAX + 1.0)) < 0.00001)
 	{
 		chromosome tempChromo;
 		m_chromosomes.push_back(tempChromo);
@@ -277,16 +270,14 @@ void GeneticAlgorithm::DeleteChromosomes()
 	{
 		for (int i = 0; i < m_chromosomes.size(); i++)
 		{
-			if (i%4)
+			if (i%2)
 			{
 				for (int j = 0; j < m_chromosomes.at(i).m_instructions.size(); j++)
 				{
 					m_chromosomes.at(i).m_instructions.at(j) = rand() % 4;
 				}
 			}
-
 		}
-
 		//std::cout << "m_chromosomes.size()" << m_chromosomes.size() << std::endl;
 	}
 	
