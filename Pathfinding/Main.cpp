@@ -10,8 +10,8 @@ int main()
 	//setting up the maps
 	Maps* maps = new Maps();
 	
-	FileReader levelLoader("Path1.txt");
-	levelLoader.ReadFile("Path1.txt", maps->NewMap(0));
+	FileReader levelLoader("Path2.txt");
+	levelLoader.ReadFile("Path2.txt", maps->NewMap(0));
 
 	GeneticAlgorithm* GAlgorithm = new GeneticAlgorithm(maps->getMaps());
 	GAlgorithm->CreateChromosomes();

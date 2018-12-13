@@ -1,6 +1,5 @@
 ﻿  GeneticAlgorithm.cpp
 d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(8): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(39): warning C4018: '<': signed/unsigned mismatch
 d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(48): warning C4018: '<': signed/unsigned mismatch
 d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(50): warning C4018: '<': signed/unsigned mismatch
 d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(52): warning C4018: '<': signed/unsigned mismatch
@@ -10,16 +9,17 @@ d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(128): warning C4018: 
 d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(130): warning C4018: '<': signed/unsigned mismatch
 d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(154): warning C4018: '<': signed/unsigned mismatch
 d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(161): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(170): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(175): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(189): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(194): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(206): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(208): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(226): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(236): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(243): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(245): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(271): warning C4018: '<': signed/unsigned mismatch
-d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(275): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(192): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(196): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(215): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(220): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(232): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(244): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(246): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(268): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(278): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(285): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(287): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(317): warning C4018: '<': signed/unsigned mismatch
+d:\university\pathfinding\pathfinding\geneticalgorithm.cpp(321): warning C4018: '<': signed/unsigned mismatch
   Pathfinding.vcxproj -> D:\UNIVERSITY\Pathfinding\Debug\Pathfinding.exe

@@ -242,13 +242,13 @@ int steve(std::vector<std::vector<int>>* _map)
 
 			if (_map->at(i).at(j) == 2)
 			{
-				xA = _map->at(i).at(j);
-				yA = _map->at(i).at(j);
+				xA = i;
+				yA = j;
 			}
 			else if (_map->at(i).at(j) == 3)
 			{
-				xB = _map->at(i).at(j);
-				yB = _map->at(i).at(j);
+				xB = i;
+				yB = j;
 			}
 
 		}
