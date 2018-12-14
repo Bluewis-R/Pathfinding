@@ -16,8 +16,9 @@ struct coord
 	int x = 0;
 	int y = 0;
 };
-//	struscture of the chromosome //0 = top, 1 = right, 2 = bottom, 3 = left
-struct chromosome
+
+//	struscture of the gene //0 = top, 1 = right, 2 = bottom, 3 = left
+struct gene
 {
 	std::vector<int> m_instructions;
 	float m_fitness = 0;
@@ -32,27 +33,27 @@ class GeneticAlgorithm
 private:
 	std::vector<std::vector<std::vector<int>>*>* m_maps;
 	std::vector<std::vector<int>>* m_currentMap;
-	std::vector<chromosome> m_chromosomes;
+	std::vector<gene> m_genes;
 	coord m_startPoint;
 	coord m_endPoint;
 	bool m_goal;
-	chromosome m_endChromosome;
+	gene m_endGene;
 
 
 public:
 	GeneticAlgorithm(std::vector<std::vector<std::vector<int>>*>* _map);
 	bool GeneticAlgorithm1();
-	void CreateChromosomes();
-	std::vector<chromosome>* GetChromosomes() { return &m_chromosomes; }
+	void CreateGenes();
+	std::vector<gene>* GetGenes() { return &m_genes; }
 	void FitnessMethod1();
-	chromosome GetChromosome(int _i) { return m_chromosomes.at(_i); }
-	void Draw(std::vector<std::vector<int>>* _map, chromosome _chromo);
+	gene GetGene(int _i) { return m_genes.at(_i); }
+	void Draw(std::vector<std::vector<int>>* _map, gene _gene);
 	void Breed();
-	chromosome CalculateIndividual();
+	gene CalculateIndividual();
 
-	void CreateNewChromosomes();
-	void DeleteChromosomes();
-
+	void CreateNewGenes();
+	void PurgeGenes();
+	gene GetEndGene() { return m_endGene; }
 };
 
 

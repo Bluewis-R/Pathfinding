@@ -219,10 +219,10 @@ int steve(std::vector<std::vector<int>>* _map)
 	m = _map->at(0).size();
 
 	// create empty map
-	for (int x = 0; x < _map->size(); x++)
+	for (int y = 0; y < _map->size(); y++)
 	{
 		std::vector<int> temp;
-		for (int y = 0; y < _map->at(x).size(); y++)
+		for (int x = 0; x < _map->at(y).size(); x++)
 		{
 			temp.push_back(0);
 		}
@@ -233,22 +233,25 @@ int steve(std::vector<std::vector<int>>* _map)
 	}
 
 	// fillout the map matrix with a '+' pattern
-	int xA, xB, yA, yB;
-	for (int i = 0; i < _map->size(); i++)
+	int xA;
+	int yA;
+	int xB;
+	int yB;
+	for (int i = 0; i < _map->size(); i++)	//	y
 	{
-		for (int j = 0; j < _map->at(i).size(); j++)
+		for (int j = 0; j < _map->at(i).size(); j++)	//	x
 		{
 			map.at(i).at(j) = _map->at(i).at(j);
 
 			if (_map->at(i).at(j) == 2)
 			{
-				xA = i;
-				yA = j;
+				xA = j;
+				yA = i;
 			}
-			else if (_map->at(i).at(j) == 3)
+			if (_map->at(i).at(j) == 3)
 			{
-				xB = i;
-				yB = j;
+				xB = j;
+				yB = i;
 			}
 
 		}
